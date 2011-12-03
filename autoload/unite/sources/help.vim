@@ -1,6 +1,6 @@
 " help source for unite.vim
 " Version:     0.0.3
-" Last Change: 17 Jul 2011.
+" Last Change: 03-Dec-2011.
 " Author:      tsukkee <takayuki0510 at gmail.com>
 " Licence:     The MIT License {{{
 "     Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -150,6 +150,16 @@ function! s:action_table.tabopen.func(candidate)
     let save_ignorecase = &ignorecase
     set noignorecase
     execute 'tab' a:candidate.action__command
+    let &ignorecase = save_ignorecase
+endfunction
+
+let s:action_table.vsplit = {
+\ 'description': 'open help in a new window split vertically'
+\}
+function! s:action_table.vsplit.func(candidate)
+    let save_ignorecase = &ignorecase
+    set noignorecase
+    execute 'vertical' a:candidate.action__command
     let &ignorecase = save_ignorecase
 endfunction
 
